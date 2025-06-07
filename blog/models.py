@@ -11,7 +11,9 @@ class Status(BaseModel):
 
 
      def __str__(self):
-          return f'{self.icon} - {self.name}'
+          return f'{self.icon.url} - {self.name}'
+
+
 
 class Blog(BaseModel):
      title = models.CharField(max_length=200)
