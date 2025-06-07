@@ -15,7 +15,7 @@ class Status(BaseModel):
 
 class Blog(BaseModel):
      title = models.CharField(max_length=200)
-     slug = models.SlugField(unique=True, blank=True, allow_unicode=True)
+     slug = models.SlugField(unique=True, blank=True)
      subtitle = models.CharField(max_length=200, blank=True, null=True)
      content = models.TextField()
      image = models.ImageField(upload_to='blog_images/', blank=True, null=True)
@@ -27,8 +27,8 @@ class Blog(BaseModel):
 
      def save(self, *args, **kwargs):
           if not self.slug:
-               self.slug = slugify(self.title)
-          super().save(*args, **kwargs)
+               self.slug = slugify(self.title,  allow_unicode=True)
+          return super().save(*args, **kwargs)
 
 
      def __str__(self):
