@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+detail page
+{% endblock title %}
+{% block content %}
+
+
+      <!-- about section start -->
+      <div class="about_section layout_padding">
+         <div class="container">
+            <div class="about_section_2">
+               <div class="row">
+                  <div class="col-md-6"> 
+                     <div class="about_taital_box">
+                        <h1 class="about_taital">{{ blogdetail.title }}</h1>
+                        <!-- <h1>{{ blogdetail.subtitle }}</h1> -->
+                        <p class=" about_text" style="padding: 0 0 30px 0;">{{ blogdetail.content }}</p>
+                        <br>
+                        <br>
+                     </div>
+                  </div>
+                  <div class="col-md-6"> 
+                     <div class="image_iman"><img src="{{ blogdetail.image.url }}" class="about_img"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- about section end -->
+
+
+{% endblock content %}

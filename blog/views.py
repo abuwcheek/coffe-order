@@ -18,6 +18,9 @@ class BlogView(View):
 class BlogDetailView(View):
      def get(self, request, slug):
           blogdetail = Blog.objects.get(slug=slug)
+          blogdetail.views += 1
+          blogdetail.save()
+          
 
           context = {
                'blogdetail': blogdetail,
