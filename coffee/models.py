@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.text import slugify
-from djrichtextfield.models import RichTextField
+# from djrichtextfield.models import RichTextField
+from ckeditor.fields import RichTextField # Agar rasm yuklash kerak bo'lmasa
+from ckeditor_uploader.fields import RichTextUploadingField # <--- Rasm yuklash funksiyasi uchun buni ishlatamiz
 from base.models import BaseModel
 from blog.models import Status
 
@@ -10,7 +12,7 @@ class CoffeeModel(BaseModel):
      title = models.CharField(max_length=200)
      slug  = models.SlugField(unique=True, blank=True)
      mini_desc = models.CharField(max_length=200)
-     description =  RichTextField()
+     description =  RichTextUploadingField()
      image = models.ImageField(upload_to='coffee_images/', null=True, blank=True)
      status = models.ForeignKey(Status, on_delete=models.SET_NULL, related_name='coffee_status', null=True, blank=True)
      views = models.PositiveIntegerField(default=0)

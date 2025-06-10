@@ -32,20 +32,50 @@ INSTALLED_APPS = [
     'blog',
     'coffee',
 
-    'djrichtextfield',
+    # 'djrichtextfield',
+    'ckeditor',         # <--- Bu qatorni qo'shing
+    'ckeditor_uploader',
 ]
 
 
-DJRICHTEXTFIELD_CONFIG = {
-    'js': ['//cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js'],
-    'init_template': 'djrichtextfield/init/tinymce.js',
-    'settings': {
-        'menubar': False,
-        'plugins': 'link image',
-        'toolbar': 'bold italic | link image | removeformat',
-        'width': 700
-    }
+
+# myproject/settings.py
+
+# ... boshqa sozlamalar
+
+# CKEditor sozlamalari
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full', # Yoki 'Basic', 'Standard' yoki o'zingiz xohlagan tugmalar ro'yxati
+        'height': 300,
+        'width': 800,
+        'extraPlugins': 'codesnippet', # Agar kod snippetlarini qo'shmoqchi bo'lsangiz
+        'skin': 'moono', # CKEditor skin (moono, kama, office2003)
+        # 'uiColor': '#9AB8F3', # Rang berish
+        'toolbar_Full': [
+            ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak'],
+            ['TextColor', 'BGColor'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote'],
+            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Source', '-', 'Maximize'],
+            ['CodeSnippet'], # Yuqoridagi extraPlugins ichida bo'lsa
+        ],
+        'filebrowserBrowseUrl': '/ckeditor/browse/', # Rasmlar/fayllar brauzeri URL
+        'filebrowserUploadUrl': '/ckeditor/upload/', # Rasmlar/fayllar yuklash URL
+    },
+    # Agar boshqa turdagi CKEditorga ega bo'lishni xohlasangiz, bu yerga qo'shishingiz mumkin
+    'simple': {
+        'toolbar': 'Basic',
+        'height': 200,
+        'width': 600,
+    },
 }
+
+# CKEditor yuklash yo'li sozlamasi
+CKEDITOR_UPLOAD_PATH = 'uploads/' # Media papkasida 'uploads' papkasi ichiga rasmlar yuklanadi
+
 
 
 MIDDLEWARE = [
