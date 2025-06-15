@@ -12,11 +12,6 @@ class CoffeeModelAdmin(admin.ModelAdmin):
      prepopulated_fields = {'slug': ('title',)}
      ordering = ('-created_at',)
      readonly_fields = ('views', )
-     fieldsets = (
-          (None, {
-               'fields': ('title', 'slug', 'description', 'image', 'price', 'percentage', 'views', 'status', 'is_active', 'is_deleted', 'is_featured', 'is_fact', 'is_popular', 'is_trending')
-          }),
-     )
 
 
      def new_price(self, obj):
@@ -31,8 +26,4 @@ class TestimonalsAdmin(admin.ModelAdmin):
      search_fields = ('full_name', 'phone_number')
      list_editable = ('is_active', 'is_deleted', 'is_featured', 'is_fact', 'is_popular', 'is_trending')
      ordering = ('-created_at',)
-     fieldsets = (
-          (None, {
-               'fields': ('full_name', 'phone_number', 'message', 'is_active', 'is_deleted')
-          }),
-     )
+
