@@ -101,6 +101,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'blog.context_processor.index_processor',
+                'coffee.context_processor.index_processor',
             ],
         },
     },
@@ -162,7 +163,6 @@ STATIC_ROOT  = os.path.join(BASE_DIR, 'staticfiles')
 
 # Base url to serve media files
 MEDIA_URL = '/media/'
-
 # Path where media is stored'
 MEDIA_ROOT = BASE_DIR / 'media'
 # Older versions of Django that use os module for path traversal do this instead

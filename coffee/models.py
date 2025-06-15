@@ -11,17 +11,24 @@ from blog.models import Status
 class CoffeeModel(BaseModel):
      title = models.CharField(max_length=200)
      slug  = models.SlugField(unique=True, blank=True)
-     mini_desc = models.CharField(max_length=200)
      description =  RichTextUploadingField()
      image = models.ImageField(upload_to='coffee_images/', null=True, blank=True)
      status = models.ForeignKey(Status, on_delete=models.SET_NULL, related_name='coffee_status', null=True, blank=True)
-     views = models.PositiveIntegerField(default=0)
+     sub_desc = models.CharField(max_length=200, verbose_name='qisqa komment')
      price = models.IntegerField(default=0)
      percentage = models.IntegerField(default=0)
+     views = models.PositiveIntegerField(default=0)
 
 
      def __str__(self):
           return f'{self.title} - {self.image}'
+     
+
+     @property
+     def get_new_price(self):
+          if not self.percentage:
+               return self.price
+          return round(self.price * (100 - self.percentage)/100)
      
 
      def save(self, *args, **kwargs):

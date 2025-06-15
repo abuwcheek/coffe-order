@@ -4,7 +4,7 @@ from .models import CoffeeModel, Testimonals, OrderModel
 
 @admin.register(CoffeeModel)
 class CoffeeModelAdmin(admin.ModelAdmin):
-     list_display = ('id' ,'title', 'price', 'percentage', 'views', 'status', 'is_active', 'is_deleted', 'is_featured', 'is_fact', 'is_popular', 'is_trending')
+     list_display = ('id' ,'title', 'price', 'percentage', 'new_price', 'views', 'status', 'is_active', 'is_deleted', 'is_featured', 'is_fact', 'is_popular', 'is_trending')
      list_display_links = ('id', 'title')
      search_fields = ('title', 'price', 'percentage')
      list_filter = ('status',)
@@ -17,6 +17,10 @@ class CoffeeModelAdmin(admin.ModelAdmin):
                'fields': ('title', 'slug', 'description', 'image', 'price', 'percentage', 'views', 'status', 'is_active', 'is_deleted', 'is_featured', 'is_fact', 'is_popular', 'is_trending')
           }),
      )
+
+
+     def new_price(self, obj):
+          return obj.get_new_price
 
 
 
