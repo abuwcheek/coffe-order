@@ -15,8 +15,8 @@ class CoffeeModel(BaseModel):
      image = models.ImageField(upload_to='coffee_images/', null=True, blank=True)
      status = models.ForeignKey(Status, on_delete=models.SET_NULL, related_name='coffee_status', null=True, blank=True)
      sub_desc = models.CharField(max_length=200, verbose_name='qisqa komment')
-     price = models.IntegerField(default=0)
-     percentage = models.IntegerField(default=0)
+     price = models.IntegerField()
+     percentage = models.IntegerField()
      views = models.PositiveIntegerField(default=0)
 
 
