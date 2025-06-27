@@ -33,5 +33,5 @@ class BlogAdmin(admin.ModelAdmin):
      ordering = ('-created_at',)
      list_editable = ('status' ,'is_active', 'is_deleted', 'is_featured', 'is_fact', 'is_popular', 'is_trending')
      prepopulated_fields = {'slug': ('title',)}
-     readonly_fields = ('views', 'likes')
+     # readonly_fields = ('views', 'likes')
      

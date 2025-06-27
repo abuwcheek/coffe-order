@@ -160,12 +160,12 @@ index page
                   {% for blog in factik_blog %}
                   <div class="col-md-6">
                      <div class="blog_box">
-                        <div class="blog_img"><img src="{{ blog.image.url }}"></div>
+                        <div class="blog_img"><img src="{{ blog.image.url }}" style="width: 600px; height: 300px;"></div>
                         <h4 class="date_text">{{ blog.status.name }}</h4>
-                        <h4 class="prep_text">PREP TECHNIQUES Coffee</h4>
-                        <p class="lorem_text">distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a moredistracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more</p>
+                        <h4 class="prep_text">{{ blog.title }}</h4>
+                        <p class="lorem_text">{{ blog.subtitle }}</p>
                      </div>
-                     <div class="read_btn"><a href="#">Read More</a></div>
+                     <div class="read_btn"><a href="{% url 'blog:blogfactdetailurl' blog.slug %}">Читать далее</a></div>
                   </div>
                   {% endfor %}
                </div>
